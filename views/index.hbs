@@ -1,0 +1,68 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="row">
+      <h1>你想對誰說幹話？</h1>
+    </div>
+  </div>
+
+  <form method="POST" action="/">
+    <div class="row card-deck mt-5">
+      <div class="card col-4 text-center border-0">
+        <div class="embed-responsive embed-responsive-4by3">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5668/angry-developer.jpg"
+            class="card-img-top embed-responsive-item" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="title" id="engineer" value="工程師" {{#if taskStatus1}}
+              checked {{/if}}>
+            <label class="form-check-label" for="engineer">
+              <h5>工程師</h5>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4 text-center border-0">
+        <div class="embed-responsive embed-responsive-4by3">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5667/angry-designer.jpg"
+            class="card-img-top embed-responsive-item" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="title" id="designer" value="設計師" {{#if taskStatus2}}
+              checked {{/if}}>
+            <label class="form-check-label" for="designer">
+              <h5>設計師</h5>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card col-4 text-center border-0">
+        <div class="embed-responsive embed-responsive-4by3">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5669/angry-founder.jpg"
+            class="card-img-top embed-responsive-item" alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="title" id="entrepreneur" value="創業家" {{#if taskStatus3}}
+              checked {{/if}}>
+            <label class="form-check-label" for="entrepreneur">
+              <h5>創業家</h5>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="button-wrapper col-2 pl-5 pr-0">
+        <button class="btn btn-success mt-5" type="submit">產生幹話</button>
+      </div>
+      <div class="form-group col-10 justify-content-end basic-textarea rounded-corners pl-0 mt-5">
+        <textarea class="form-control" id="outcome" rows="3">{{rubbish}}</textarea>
+      </div>
+    </div>
+  </form>
+</div>
