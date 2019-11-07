@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const generateRubbish = require('./generate_rubbish')
 const app = express()
+const taskList = require('./tasks.json')
 const port = 3000
 
 // 設定樣版引擎
@@ -15,23 +16,24 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // 路由設定
 app.get('/', (req, res) => {
-  res.render('index')
+
+  res.render('index', { tasks: taskList.results })
 })
 
 app.post('/', (req, res) => {
+  taskList.results[0].selected = false
+  taskList.results[1].selected = false
+  taskList.results[2].selected = false
   const task = req.body.title
   const rubbish = generateRubbish(task)
-  let taskStatus1 = false
-  let taskStatus2 = false
-  let taskStatus3 = false
   if (task === '工程師') {
-    taskStatus1 = true
+    taskList.results[0].selected = true
   } else if (task === '設計師') {
-    taskStatus2 = true
+    taskList.results[1].selected = true
   } else if (task === '創業家') {
-    taskStatus3 = true
+    taskList.results[2].selected = true
   }
-  res.render('index', { task, taskStatus1, taskStatus2, taskStatus3, rubbish })
+  res.render('index', { tasks: taskList.results, task, rubbish })
 })
 
 // 啟動並監聽伺服器
